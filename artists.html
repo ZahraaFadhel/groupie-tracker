@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/styleArtists.css" rel="stylesheet">
+    <title>Groupie Tracker</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="http://localhost:8080/">Home</a></li>
+        <li><a href="http://localhost:8080/aboutUs">About us</a></li>
+      </ul>
+    </nav>
+
+    <h1>Groupie Tracker</h1>
+    
+    <div class="container">
+      {{range .}}
+          <div> 
+            <!-- make URL Artist/[id] -->
+            <a class="ArtLink" href="/artist/{{.Id}}"> 
+              <img src="{{.Image}}" alt="Click here to go to the Artist page">
+              <p class="artistName">{{.Name}}</p>
+            </a>
+          </div>
+      {{ end }}
+    </div>
+
+  </body>
+</html>
