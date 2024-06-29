@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styleArtist.css" rel="stylesheet">
+    <title>Artist</title>
+</head>
+
+<body>
+
+    <div class = "button">
+        <a href="http://localhost:8080/"> Return </a>
+    </div>
+    
+
+    <div class="artistHeader">
+        <h1 class="artistName">{{.Name}}</h1>
+        <img src="{{.Image}}">
+    </div>
+    
+    <div class="container">
+            <div class="Members">
+                <h2>Members</h2>
+                <ul>
+                    {{range .Members}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+
+            <div class="CreationDate">
+                <h2>Creation Date</h2>
+                {{.CreationDate}}
+            </div>
+
+            <div class="FirstAlbum">
+                <h2>First Album</h2>
+                {{.FirstAlbum}}
+            </div>
+
+        </div>
+
+            <div class="Concerts">
+                <h2>Concerts</h2>
+                <div class="concert-container">
+                    {{range $key, $value := .Concerts}}
+                        <div class="concert">
+                            <div class="loc">{{$key}}</div>
+                            <div class="dates">
+                                {{range $date := $value}}
+                                    <div class="date">{{$date}}</div>
+                                {{end}}
+                            </div>
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+    </div>
+        
+</body>
+</html>
