@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/styleArtists.css" rel="stylesheet">
+    <!-- <link rel="icon" type="image/png" href="/img/pacman.svg"> -->
   </head>
   <body>
     <nav class="navbar">
@@ -34,14 +35,78 @@
     <div class="search-wrapper">
       <div class="row">
         <input id="search-input" type="search" placeholder="Looking for ..." autocomplete="on">
-      <div class="result-box">
-        <!-- <ul>
-          <li>Something1</li>
-          <li>Something2</li>
-          <li>Something3</li>
-        </ul> -->
+
+        <button title="filter" class="filter" id="filter-button">
+          <svg viewBox="0 0 512 512" height="1em" id="filter-icon">
+            <path
+              d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
+            ></path>
+          </svg>
+        </button>
       </div>
+      <div class="result-box"></div>
     </div>
+
+    <div class="filters-container">
+
+      <!-- creation date -->
+      <div class="creationRange">
+        <h2>Creation Date</h2>
+        <div class="range-container">
+          <input id="creationRange" type="range" min="1958" max="2018" value="1958" class="range-slider">
+          <input id="creationRangeEnd" type="range" min="1958" max="2018" value="2018" class="range-slider">
+        </div>
+        <div class="range-values">
+          <span id="creationRangeValueStart">1958</span> <span id="creationRangeValueEnd">2018</span>
+        </div>
+      </div>
+    
+      <!-- first album -->
+      <div class="AlbumRange">
+        <h2>First Album Date</h2>
+        <div class="range-container">
+          <input id="albumRange" type="range" min="1963" max="2018" value="1963" class="range-slider">
+          <input id="albumRangeEnd" type="range" min="1963" max="2018" value="2018" class="range-slider">
+        </div>
+        <div class="range-values">
+          <span id="albumRangeValueStart">1963</span> <span id="albumRangeValueEnd">2018</span>
+        </div>
+      </div>
+    
+      <!-- number of members -->
+      <h2>Number of Members</h2>
+      <div class="Members">
+        <label for="1"><input type="checkbox" id="1"> 1</label>
+        <label for="2"><input type="checkbox" id="2"> 2</label>
+        <label for="3"><input type="checkbox" id="3"> 3</label>
+        <label for="4"><input type="checkbox" id="4"> 4</label>
+        <label for="5"><input type="checkbox" id="5"> 5</label>
+        <label for="6"><input type="checkbox" id="6"> 6</label>
+        <label for="7"><input type="checkbox" id="7"> 7</label>
+        <label for="8"><input type="checkbox" id="8"> 8</label>
+        <label for="9"><input type="checkbox" id="9"> 9</label>
+    </div>
+    
+      <!-- locations -->
+      <h2>Locations</h2>
+      <div class="Location">
+        <div class="location-search-container">
+          <input id="Location-Search" type="search" oninput="output.value=this.value" autocomplete="on" multiple>
+          <button class="location-search-button" id="addLocation">+</button>
+        </div>
+        <output for id="output" hidden></output>
+
+        <div id="locationToFilter">
+
+        </div>
+        <div id="LocationsFiltered">
+
+        </div>
+        <button id="apply">APPLY</button>
+      </div>
+    
+    </div>
+    
 
         <div class="main-container" id="discover">
           <!-- {{range .}}
@@ -56,6 +121,7 @@
           {{ end }} -->
         </div>
 
-      <script src="/search.js" defer></script>
+      <script src="/search.js" defer ></script>
+      <script src="/filters.js" defer></script>
   </body>
 </html>

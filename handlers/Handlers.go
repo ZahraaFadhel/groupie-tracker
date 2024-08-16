@@ -7,6 +7,12 @@ import (
 	"strings"
 )
 
+var artists []Artist
+
+func Init() {
+	artists, _= GetArtistsData()
+}
+
 func GetHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		ErrorHandler(w, r, http.StatusMethodNotAllowed)
@@ -24,7 +30,7 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	artists, _ := GetArtistsData()
+	// artists, _ = GetArtistsData()
 	t.Execute(w, artists)
 }
 
@@ -35,11 +41,11 @@ func GetArtist(w http.ResponseWriter, r *http.Request) {
 		ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	artists, err := GetArtistsData()
-	if err != nil {
-		ErrorHandler(w, r, http.StatusInternalServerError)
-		return
-	}
+	// artists, err := GetArtistsData()
+	// if err != nil {
+	// 	ErrorHandler(w, r, http.StatusInternalServerError)
+	// 	return
+	// }
 
 	for _, artist := range artists {
 		if artist.Id == id {

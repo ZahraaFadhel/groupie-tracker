@@ -9,6 +9,9 @@ import (
 )
 
 func main() {
+
+	groupieTracker.Init()
+	
 	http.HandleFunc("/", groupieTracker.GetHandler)
 	http.HandleFunc("/artist/", groupieTracker.GetArtist)
 	http.HandleFunc("/aboutUs/", groupieTracker.AboutUsHandler)
@@ -28,6 +31,11 @@ func main() {
 	http.HandleFunc("/search.js", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/artists/search.js")
 	})
+	http.HandleFunc("/filters.js", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/artists/filters.js")
+	})
+
+	
 
 	// to solve CORS issue
 	http.HandleFunc("/api/artists", fetchArtists)

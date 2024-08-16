@@ -1,3 +1,5 @@
+
+
 :root {
   --OurPurple: #AD88C6;
   --OurLightPurple: #DDD6F3;
@@ -6,12 +8,11 @@
 body, html {
   margin: 0;  
   scroll-behavior: smooth;
-  height: 100%;
-  background-repeat: no-repeat;
+  background-image: linear-gradient(19deg, #d8b2e9 0%, #ddd6f3 80%);
+  background-size: cover;
 }
 
 .main-container {
-  /* background-image: linear-gradient(19deg, #d8b2e9 0%, #ddd6f3 80%);   */
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -122,12 +123,11 @@ img:hover {
 }
 
 .WelcomePage {
-  background-color: #FAACA8;
   background-image: linear-gradient(180deg, #AD88C6 0%, #DDD6F3 80%); 
   height: calc(100vh - 150px);
   padding: 3% 2%;
   width: auto;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,30 +222,269 @@ img:hover {
   animation-delay: 1.9s;
 }
 
-.search-wrapper{
-  background-image: linear-gradient(19deg, #d8b2e9 0%, #ddd6f3 80%);  
+.search-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.row {
+  width: 70%;
+  display: flex;
+  border: solid 3px var(--OurPurple);
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .row input {
   flex: 1;
   height: 50px;
   background: transparent;
-  padding: 0px 7px;
-  margin: 0px 0px;
+  padding: 0 7px;
+  margin: 0;
   font-size: 28px;
   width: 100%;
   border: none;
   outline: 0;
+  background-color: transparent;
+  border-radius: 15px 0 0 15px;
 }
 
-.row {
+/* FILTERS */
+
+.filters-container {
+  display: none;
+}
+
+.filters-container.active {
+  display: block;
+  max-width: 600px;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter {
+  background-color: transparent;
+  padding: 0 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: solid 1px var(--OurPurple);
+}
+
+.filter svg {
+  height: 16px;
+}
+
+.filter:hover svg {
+  fill: var(--OurPurple);
+}
+
+.range-container {
+  position: relative;
+  height: 20px;
+}
+
+.range-slider {
+  /* make them look one */
+  position: absolute; 
+  width: 100%;
+  height: 0;
+
+  /* to not move through slider by clicking */
+  pointer-events: none;
+
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  z-index: 1;
+}
+
+/* to design the thump of the range slider */
+.range-slider::-webkit-slider-thumb {
+  pointer-events: all; /* to drag*/
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: var(--OurPurple);
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: var(--OurPurple);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 99;
+  transform: translateY(-50%);
+}
+
+/* for firefox */
+.range-slider::-moz-range-thumb {
+  pointer-events: all; /* to drag*/
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: var(--OurPurple);
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: var(--OurPurple);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.range-slider::-webkit-slider-runnable-track {
+  background: var(--OurPurple);
+  height: 3px;
+  z-index: 0;
+}
+
+.range-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.Members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+  /* background-color: #f9f9f9; */
+  border-radius: 8px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.Members label {
+  display: flex;
+  width: 50px;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #eee;
+  box-shadow: -4px -2px 16px 0px var(--OurPurple), 4px 2px 16px 0px var(--OurPurple);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.Members input[type="checkbox"]:checked, label:hover {
+  background-color: var(--OurPurple);
+  color: white;
+}
+
+.Members input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.Location {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.location-search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#Location-Search {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.location-search-button {
+  padding: 6px 16px;
+  font-size: 16px;
+  background-color: var(--OurPurple); /* Adjust to your desired color */
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 20px;
+}
+
+/* Styling for added location divs */
+#LocationsFiltered .location-item {
+  border: dashed 2px var(--OurPurple);
+  font-size: 18px;
+  padding: 10px 5px;
+  margin: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.location-item .delete-button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  /* background-color: white; */
+  color: var(--OurPurple);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  text-align: center;
+  padding: 0;
+}
+
+.location-item .delete-button:hover {
+  background-color: var(--OurPurple);
+  color: white;
+}
+
+#apply {
+  padding: 0.8em 1.8em;
+  border: 2px solid var(--OurPurple);
+  background-color: var(--OurPurple);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: inherit;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 5px;
+  transition: all 0.5s ease;
+ }
+
+ #apply:hover {
+  border: solid 3px white;
+  cursor: pointer;
+ }
+
+/* SUGGESTIONS */
+
+.result-box {
   width: 70%;
-  border: solid 3px var(--OurPurple);
-  border-radius: 15px;
-  padding: 10px 10px;
 }
 
 .result-box ul{
@@ -343,4 +582,13 @@ img:hover {
     padding-top: 130px;
   }
 }
+
+/* Move one of the sliders down slightly */
+/* #creationRange {
+  margin-top: -10px;
+}
+
+#creationRangeEnd {
+  margin-top: 10px;
+} */
 

@@ -63,14 +63,14 @@ func GetArtistsData() ([]Artist, error) {
 		log.Fatal(err)
 	}
 
-	var Artisis []Artist
-	err = json.Unmarshal(data, &Artisis)
+	// var Artisis []Artist
+	err = json.Unmarshal(data, &artists)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
 	}
 
-	return Artisis, nil
+	return artists, nil
 }
 
 func GetRelationData(id string) (Relation, error) {
