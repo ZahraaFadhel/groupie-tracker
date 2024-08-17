@@ -34,6 +34,9 @@ func main() {
 	http.HandleFunc("/filters.js", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/artists/filters.js")
 	})
+	http.HandleFunc("/index.js", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/artists/index.js")
+	})
 
 	
 

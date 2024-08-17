@@ -352,13 +352,56 @@ img:hover {
   padding-top: 10px;
 }
 
+/* First Album Date */
+
+.range-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.AlbumRange {
+  background-color: #eee;
+  box-shadow: -4px -2px 16px 0px var(--OurPurple), 4px 2px 16px 0px var(--OurPurple);
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+  max-width: 400px; 
+  margin: 20px auto; /* Center the container */
+}
+
+.AlbumRange h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333; 
+  text-align: center; /* Center the heading */
+}
+
+.date-picker {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  background-color: #fff; 
+  transition: border-color 0.3s;
+}
+
 .Members {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 20px;
   padding: 10px;
-  /* background-color: #f9f9f9; */
   border-radius: 8px;
   width: 300px;
   margin: 0 auto;
@@ -379,7 +422,7 @@ img:hover {
   font-weight: bold;
 }
 
-.Members input[type="checkbox"]:checked, label:hover {
+.Members label.checked, label:hover {
   background-color: var(--OurPurple);
   color: white;
 }
@@ -430,7 +473,7 @@ img:hover {
 }
 
 /* Styling for added location divs */
-#LocationsFiltered .location-item {
+#output-locations .location-item {
   border: dashed 2px var(--OurPurple);
   font-size: 18px;
   padding: 10px 5px;
@@ -461,7 +504,7 @@ img:hover {
   color: white;
 }
 
-#apply {
+.buttons button {
   padding: 0.8em 1.8em;
   border: 2px solid var(--OurPurple);
   background-color: var(--OurPurple);
@@ -474,9 +517,10 @@ img:hover {
   width: 150px;
   margin-top: 5px;
   transition: all 0.5s ease;
+  margin: auto 10px;
  }
 
- #apply:hover {
+ .buttons button:hover {
   border: solid 3px white;
   cursor: pointer;
  }
@@ -582,13 +626,4 @@ img:hover {
     padding-top: 130px;
   }
 }
-
-/* Move one of the sliders down slightly */
-/* #creationRange {
-  margin-top: -10px;
-}
-
-#creationRangeEnd {
-  margin-top: 10px;
-} */
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/styleArtists.css" rel="stylesheet">
-    <!-- <link rel="icon" type="image/png" href="/img/pacman.svg"> -->
+    <link rel="icon" type="image/jpeg" href="favicon.jpeg">
   </head>
   <body>
     <nav class="navbar">
@@ -49,9 +49,9 @@
 
     <div class="filters-container">
 
+      <h2>Creation Date</h2>
       <!-- creation date -->
       <div class="creationRange">
-        <h2>Creation Date</h2>
         <div class="range-container">
           <input id="creationRange" type="range" min="1958" max="2018" value="1958" class="range-slider">
           <input id="creationRangeEnd" type="range" min="1958" max="2018" value="2018" class="range-slider">
@@ -61,17 +61,21 @@
         </div>
       </div>
     
-      <!-- first album -->
+      <!-- First Album -->
       <div class="AlbumRange">
         <h2>First Album Date</h2>
         <div class="range-container">
-          <input id="albumRange" type="range" min="1963" max="2018" value="1963" class="range-slider">
-          <input id="albumRangeEnd" type="range" min="1963" max="2018" value="2018" class="range-slider">
-        </div>
-        <div class="range-values">
-          <span id="albumRangeValueStart">1963</span> <span id="albumRangeValueEnd">2018</span>
+          <div class="input-group">
+            <label for="albumRange"> start date </label>
+            <input id="albumRange" type="date" value="1963-01-01" class="date-picker">
+          </div>
+          <div class="input-group">
+            <label for="albumRangeEnd"> end date </label>
+          <input id="albumRangeEnd" type="date" value="2018-12-31" class="date-picker">
+          </div>
         </div>
       </div>
+
     
       <!-- number of members -->
       <h2>Number of Members</h2>
@@ -96,13 +100,14 @@
         </div>
         <output for id="output" hidden></output>
 
-        <div id="locationToFilter">
+
+        <div id="output-locations">
 
         </div>
-        <div id="LocationsFiltered">
-
+        <div class="buttons">
+          <button id="apply">apply</button>
+          <button id="clear">clear</button>
         </div>
-        <button id="apply">APPLY</button>
       </div>
     
     </div>
@@ -121,7 +126,6 @@
           {{ end }} -->
         </div>
 
-      <script src="/search.js" defer ></script>
-      <script src="/filters.js" defer></script>
-  </body>
+        <script src="index.js" type="module"></script>
+    </body>
 </html>
